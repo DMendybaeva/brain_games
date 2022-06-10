@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import readlineSync from 'readline-sync';
 
 import setUserName from '../src/cli.js';
@@ -31,4 +33,4 @@ for (let i = 0; i < 3; i += 1) {
 
 if (successRound === 3) {
   console.log(`Congratulation, ${userName}!`);
-};
+}
