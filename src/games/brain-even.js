@@ -1,8 +1,6 @@
-#!/usr/bin/env node
-
 import readlineSync from 'readline-sync';
 
-import {greetAndGetUserName, generateRandomNum, isExpectedAnswerEqualUserAnswer } from '../index.js';
+import { greetAndGetUserName, generateRandomNum, isExpectedAnswerEqualUserAnswer } from '../index.js';
 
 // games
 const gameBrainEven = () => {
