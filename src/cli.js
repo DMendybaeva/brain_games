@@ -17,6 +17,8 @@ export const displayGameRules = (gameName) => {
       return console.log('Answer "yes" if the number is even, otherwise answer "no"');
     case 'gameBrainCalc':
       return console.log('What is the result of the expression?');
+    case 'gameGcd':
+      return console.log('Find the greatest common divisor of given numbers.');
     default:
       return null;
   }
