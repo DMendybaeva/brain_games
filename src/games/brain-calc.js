@@ -11,7 +11,7 @@ import {
 import {
   ROUNDS_QUANTITY,
   generateRandomNum,
-  mathOperators,
+  MATH_OPERATORS,
   randomIndex,
   calculateExpressionResult,
 } from '../index.js';
@@ -26,7 +26,7 @@ const gameBrainCalc = () => {
   do {
     const randomNum1 = generateRandomNum();
     const randomNum2 = generateRandomNum();
-    const randomMathOperator = mathOperators[randomIndex];
+    const randomMathOperator = MATH_OPERATORS[randomIndex];
     const expression = `${randomNum1} ${randomMathOperator} ${randomNum2}`;
 
     askQuestion(expression);
