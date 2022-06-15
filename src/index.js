@@ -1,6 +1,8 @@
 export const ROUNDS_QUANTITY = 3;
-export const mathOperators = ['+', '-', '*'];
-export const MATH_OPERATOR_QUANTITY = mathOperators.length;
+export const MATH_OPERATORS = ['+', '-', '*'];
+export const MATH_OPERATOR_QUANTITY = MATH_OPERATORS.length;
+export const MIN_PROGRESSION_LENGTH = 5;
+export const MAX_PROGRESSION_LENGTH = 10;
 
 /**
  * random number from min to (max+1);
@@ -39,3 +41,21 @@ export const calculateGcd = (randomNum1, randomNum2) =>{
   }
   return calculateGcd(randomNum2, randomNum1 % randomNum2);
 };
+
+export const randomProgressionLength = generateRandomNum(
+  MIN_PROGRESSION_LENGTH,
+  MAX_PROGRESSION_LENGTH,
+);
+
+export const calculatedArithmeticProgression = (
+  firstProgressionNum,
+  progressionStep,
+) => {
+  const progression = [firstProgressionNum];
+  for (let i = 1; i < randomProgressionLength; i += 1) {
+    progression[i] = progression[i - 1] + progressionStep;
+    progression.push(progression[i]);
+  } return progression;
+};
+
+export const progressionRandomHiddenIndex = generateRandomNum(0, randomProgressionLength);
