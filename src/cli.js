@@ -11,33 +11,41 @@ export const greetAndGetUserName = () => {
   console.log(`Hello, ${userName}!`);
   return userName;
 };
+
 export const displayGameRules = (gameName) => {
   switch (gameName) {
     case 'gameBrainEven':
-      return console.log('Answer "yes" if the number is even, otherwise answer "no"');
+      console.log('Answer "yes" if the number is even, otherwise answer "no"');
+      break;
     case 'gameBrainCalc':
-      return console.log('What is the result of the expression?');
+      console.log('What is the result of the expression?');
+      break;
     case 'gameGcd':
-      return console.log('Find the greatest common divisor of given numbers.');
+      console.log('Find the greatest common divisor of given numbers.');
+      break;
     default:
-      return null;
+      break;
   }
 };
+
 export const askQuestion = (question) => {
   console.log(`Question: ${question}`);
 };
+
 export const isExpectedAnswerEqualUserAnswer = (
   expectedAnswer,
   userAnswer,
 ) => expectedAnswer === userAnswer;
+
 export const displayMessageAfterCorrectRound = () => {
   console.log('Correct!');
 };
 
-export const displayMessageAfterWrongRound = (userAnswer, expectedAnswer, userName) => {
+export const displayMessageAfterUnsuccessfulGameEnd = (userAnswer, expectedAnswer, userName) => {
   console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. Let's try again, ${userName}!`);
 };
-export const displayMessageAfterGameEnd = (userName) => {
+
+export const displayMessageAfterSuccessfulGameEnd = (userName) => {
   console.log(`Congratulation, ${userName}!`);
 };
 

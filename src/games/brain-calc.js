@@ -1,8 +1,8 @@
 import {
   greetAndGetUserName,
   displayMessageAfterCorrectRound,
-  displayMessageAfterWrongRound,
-  displayMessageAfterGameEnd,
+  displayMessageAfterUnsuccessfulGameEnd,
+  displayMessageAfterSuccessfulGameEnd,
   getUserAnswer,
   isExpectedAnswerEqualUserAnswer,
   displayGameRules,
@@ -11,9 +11,9 @@ import {
 import {
   ROUNDS_QUANTITY,
   generateRandomNum,
-  mathOperator,
+  mathOperators,
   randomIndex,
-  calculateExpectedAnswerGameCalc,
+  calculateExpressionResult,
 } from '../index.js';
 
 const gameBrainCalc = () => {
@@ -26,7 +26,7 @@ const gameBrainCalc = () => {
   do {
     const randomNum1 = generateRandomNum();
     const randomNum2 = generateRandomNum();
-    const randomMathOperator = mathOperator[randomIndex];
+    const randomMathOperator = mathOperators[randomIndex];
     const expression = `${randomNum1} ${randomMathOperator} ${randomNum2}`;
 
     askQuestion(expression);
@@ -34,7 +34,7 @@ const gameBrainCalc = () => {
     const userAnswer = getUserAnswer();
 
     const expectedAnswer = String(
-      calculateExpectedAnswerGameCalc(
+      calculateExpressionResult(
         randomMathOperator,
         randomNum1,
         randomNum2,
@@ -48,13 +48,13 @@ const gameBrainCalc = () => {
       successRound += 1;
       displayMessageAfterCorrectRound();
     } else {
-      displayMessageAfterWrongRound(userAnswer, expectedAnswer, userName);
+      displayMessageAfterUnsuccessfulGameEnd(userAnswer, expectedAnswer, userName);
       break;
     }
   }
   while (successRound < ROUNDS_QUANTITY);
   if (successRound === ROUNDS_QUANTITY) {
-    displayMessageAfterGameEnd(userName);
+    displayMessageAfterSuccessfulGameEnd(userName);
   }
 };
 

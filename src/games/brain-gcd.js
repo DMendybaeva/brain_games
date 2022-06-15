@@ -1,8 +1,8 @@
 import {
   greetAndGetUserName,
   displayMessageAfterCorrectRound,
-  displayMessageAfterWrongRound,
-  displayMessageAfterGameEnd,
+  displayMessageAfterUnsuccessfulGameEnd,
+  displayMessageAfterSuccessfulGameEnd,
   getUserAnswer,
   isExpectedAnswerEqualUserAnswer,
   displayGameRules,
@@ -11,7 +11,7 @@ import {
 import {
   ROUNDS_QUANTITY,
   generateRandomNum,
-  calculateExpectedAnswerGamePcd,
+  calculateGcd,
 } from '../index.js';
 
 const gameGcd = () => {
@@ -29,7 +29,7 @@ const gameGcd = () => {
     askQuestion(expression);
 
     const userAnswer = getUserAnswer();
-    const expectedAnswer = String(calculateExpectedAnswerGamePcd(randomNum1, randomNum2));
+    const expectedAnswer = String(calculateGcd(randomNum1, randomNum2));
     const expectedAnswerEqualUserAnswer = isExpectedAnswerEqualUserAnswer(
       expectedAnswer,
       userAnswer,
@@ -38,13 +38,13 @@ const gameGcd = () => {
       successRound += 1;
       displayMessageAfterCorrectRound();
     } else {
-      displayMessageAfterWrongRound(userAnswer, expectedAnswer, userName);
+      displayMessageAfterUnsuccessfulGameEnd(userAnswer, expectedAnswer, userName);
       break;
     }
   }
   while (successRound < ROUNDS_QUANTITY);
   if (successRound === ROUNDS_QUANTITY) {
-    displayMessageAfterGameEnd(userName);
+    displayMessageAfterSuccessfulGameEnd(userName);
   }
 };
 

@@ -1,8 +1,8 @@
 import {
   greetAndGetUserName,
   displayMessageAfterCorrectRound,
-  displayMessageAfterWrongRound,
-  displayMessageAfterGameEnd,
+  displayMessageAfterUnsuccessfulGameEnd,
+  displayMessageAfterSuccessfulGameEnd,
   getUserAnswer,
   isExpectedAnswerEqualUserAnswer,
   displayGameRules,
@@ -38,13 +38,13 @@ const gameBrainEven = () => {
       successRound += 1;
       displayMessageAfterCorrectRound();
     } else {
-      displayMessageAfterWrongRound(userAnswer, expectedAnswer, userName);
+      displayMessageAfterUnsuccessfulGameEnd(userAnswer, expectedAnswer, userName);
       break;
     }
   }
   while (successRound < ROUNDS_QUANTITY);
   if (successRound === ROUNDS_QUANTITY) {
-    displayMessageAfterGameEnd(userName);
+    displayMessageAfterSuccessfulGameEnd(userName);
   }
 };
 
