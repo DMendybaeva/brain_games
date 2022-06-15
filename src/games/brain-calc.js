@@ -13,7 +13,7 @@ import {
   generateRandomNum,
   mathOperator,
   randomIndex,
-  calculateExpectedAnswer,
+  calculateExpectedAnswerGameCalc,
 } from '../index.js';
 
 const gameBrainCalc = () => {
@@ -34,7 +34,7 @@ const gameBrainCalc = () => {
     const userAnswer = getUserAnswer();
 
     const expectedAnswer = String(
-      calculateExpectedAnswer(
+      calculateExpectedAnswerGameCalc(
         randomMathOperator,
         randomNum1,
         randomNum2,
