@@ -1,51 +1,61 @@
-import readlineSync from 'readline-sync';
+import {
+  greetAndGetUserName,
+  displayMessageAfterCorrectRound,
+  displayMessageAfterWrongRound,
+  displayMessageAfterGameEnd,
+  getUserAnswer,
+  isExpectedAnswerEqualUserAnswer,
+  displayGameRules,
+  askQuestion,
+} from '../cli.js';
+import {
+  ROUNDS_QUANTITY,
+  generateRandomNum,
+  mathOperator,
+  randomIndex,
+  calculateExpectedAnswer,
+} from '../index.js';
 
-import { greetAndGetUserName, generateRandomNum, isExpectedAnswerEqualUserAnswer } from '../index.js';
-
-// games
 const gameBrainCalc = () => {
   const userName = greetAndGetUserName();
-  console.log('What is the result of the expression?');
+  const gameName = gameBrainCalc.name;
+  displayGameRules(gameName);
 
   let successRound = 0;
 
-  for (let i = 0; i < 3; i += 1) {
-    const randomNum1 = generateRandomNum(0, 100);
-    const randomNum2 = generateRandomNum(0, 100);
-    const mathOperator = ['+', '-', '*'];
-    const randomIndex = generateRandomNum(0, 2);
+  do {
+    const randomNum1 = generateRandomNum();
+    const randomNum2 = generateRandomNum();
     const randomMathOperator = mathOperator[randomIndex];
-    const calcQuestion = `${randomNum1} ${randomMathOperator} ${randomNum2}`;
+    const expression = `${randomNum1} ${randomMathOperator} ${randomNum2}`;
 
-    console.log(`Question: ${calcQuestion}`);
-    const userAnswer = readlineSync.question('Your answer: ');
+    askQuestion(expression);
 
-    const getExpectedAnswer = () => {
-      switch (randomMathOperator) {
-        case '+':
-          return randomNum1 + randomNum2;
-        case '-':
-          return randomNum1 - randomNum2;
-        case '*':
-          return randomNum1 * randomNum2;
-        default:
-          return null;
-      }
-    };
-    const expectedAnswer = String(getExpectedAnswer());
-    const ExpectedAnswerEqualUserAnswer = isExpectedAnswerEqualUserAnswer(
+    const userAnswer = getUserAnswer();
+
+    const expectedAnswer = String(
+      calculateExpectedAnswer(
+        randomMathOperator,
+        randomNum1,
+        randomNum2,
+      ),
+    );
+    const expectedAnswerEqualUserAnswer = isExpectedAnswerEqualUserAnswer(
       expectedAnswer,
       userAnswer,
-      userName,
     );
-    if (ExpectedAnswerEqualUserAnswer) {
+    if (expectedAnswerEqualUserAnswer) {
       successRound += 1;
+      displayMessageAfterCorrectRound();
     } else {
+      displayMessageAfterWrongRound(userAnswer, expectedAnswer, userName);
       break;
     }
   }
-  if (successRound === 3) {
-    console.log(`Congratulation, ${userName}!`);
+  while (successRound < ROUNDS_QUANTITY);
+  if (successRound === ROUNDS_QUANTITY) {
+    displayMessageAfterGameEnd(userName);
   }
 };
+
 export default gameBrainCalc;

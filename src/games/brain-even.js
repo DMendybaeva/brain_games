@@ -1,35 +1,51 @@
-import readlineSync from 'readline-sync';
+import {
+  greetAndGetUserName,
+  displayMessageAfterCorrectRound,
+  displayMessageAfterWrongRound,
+  displayMessageAfterGameEnd,
+  getUserAnswer,
+  isExpectedAnswerEqualUserAnswer,
+  displayGameRules,
+  askQuestion,
+} from '../cli.js';
+import {
+  ROUNDS_QUANTITY,
+  generateRandomNum,
+  isEven,
+} from '../index.js';
 
-import { greetAndGetUserName, generateRandomNum, isExpectedAnswerEqualUserAnswer } from '../index.js';
-
-// games
 const gameBrainEven = () => {
   const userName = greetAndGetUserName();
-  console.log('Answer "yes" if the number is even, otherwise answer "no"');
+  const gameName = gameBrainEven.name;
+  displayGameRules(gameName);
 
   let successRound = 0;
 
-  for (let i = 0; i < 3; i += 1) {
-    const rundomNum = generateRandomNum(0, 100);
-    console.log(`Question: ${rundomNum}`);
-    const userAnswer = readlineSync.question('Your answer: ');
+  do {
+    const rundomNum = generateRandomNum();
+    askQuestion(rundomNum);
 
-    const isEven = rundomNum % 2 === 0;
-    const expectedAnswer = isEven === true ? 'yes' : 'no';
+    const userAnswer = getUserAnswer();
 
-    const ExpectedAnswerEqualUserAnswer = isExpectedAnswerEqualUserAnswer(
+    const isNumEven = isEven(rundomNum);
+    const expectedAnswer = isNumEven ? 'yes' : 'no';
+
+    const expectedAnswerEqualUserAnswer = isExpectedAnswerEqualUserAnswer(
       expectedAnswer,
       userAnswer,
-      userName,
     );
-    if (ExpectedAnswerEqualUserAnswer) {
+    if (expectedAnswerEqualUserAnswer) {
       successRound += 1;
+      displayMessageAfterCorrectRound();
     } else {
+      displayMessageAfterWrongRound(userAnswer, expectedAnswer, userName);
       break;
     }
   }
-  if (successRound === 3) {
-    console.log(`Congratulation, ${userName}!`);
+  while (successRound < ROUNDS_QUANTITY);
+  if (successRound === ROUNDS_QUANTITY) {
+    displayMessageAfterGameEnd(userName);
   }
 };
+
 export default gameBrainEven;
