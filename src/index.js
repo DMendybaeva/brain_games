@@ -59,3 +59,13 @@ export const calculatedArithmeticProgression = (
 };
 
 export const progressionRandomHiddenIndex = generateRandomNum(0, randomProgressionLength);
+
+export const isPrime = (randomNum) => {
+  let flag = true;
+  for (let dividedNum = 2; dividedNum < randomNum; dividedNum += 1) {
+    if (randomNum % dividedNum === 0) {
+      flag = false;
+      break;
+    }
+  } return flag;
+};
