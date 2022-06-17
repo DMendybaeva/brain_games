@@ -32,7 +32,7 @@ export const calculateExpressionResult = (randomMathOperator, randomNum1, random
   }
 };
 
-export const calculateGcd = (randomNum1, randomNum2) =>{
+export const calculateGcd = (randomNum1, randomNum2) => {
   if (randomNum2 > randomNum1) {
     return calculateGcd(randomNum2, randomNum1);
   }

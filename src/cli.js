@@ -26,6 +26,9 @@ export const displayGameRules = (gameName) => {
     case 'gameBrainProg':
       console.log('What number is missing in the progression?');
       break;
+    case 'gameBrainPrime':
+      console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+      break;
     default:
       break;
   }
