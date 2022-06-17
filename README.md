@@ -14,7 +14,7 @@ Bash
 Installation asciicast
 Clone project
 
-git clone git@github.com:reznikovAndrey/frontend-project-lvl1.git
+git clone git@github.com:DMendybaeva/brain_games.git
 Go in project dir
 
 cd frontend-project-lvl1
