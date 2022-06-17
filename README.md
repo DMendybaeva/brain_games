@@ -17,7 +17,7 @@ Clone project
 git clone git@github.com:DMendybaeva/brain_games.git
 Go in project dir
 
-cd frontend-project-lvl1
+cd brain_games
 Install dependecies
 
 npm ci
