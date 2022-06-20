@@ -3,6 +3,7 @@ export const MATH_OPERATORS = ['+', '-', '*'];
 export const MATH_OPERATOR_QUANTITY = MATH_OPERATORS.length;
 export const MIN_PROGRESSION_LENGTH = 5;
 export const MAX_PROGRESSION_LENGTH = 10;
+export const HIDDEN_ITEM = '...';
 
 /**
  * random number from min to (max+1);
@@ -16,8 +17,6 @@ export const generateRandomNum = (min = 0, max = 100) => {
 };
 
 export const isEven = (rundomNum) => rundomNum % 2 === 0;
-
-export const randomIndex = generateRandomNum(0, MATH_OPERATOR_QUANTITY - 1);
 
 export const calculateExpressionResult = (randomMathOperator, randomNum1, randomNum2) => {
   switch (randomMathOperator) {
@@ -42,30 +41,35 @@ export const calculateGcd = (randomNum1, randomNum2) => {
   return calculateGcd(randomNum2, randomNum1 % randomNum2);
 };
 
-export const randomProgressionLength = generateRandomNum(
-  MIN_PROGRESSION_LENGTH,
-  MAX_PROGRESSION_LENGTH,
-);
-
-export const calculatedArithmeticProgression = (
-  firstProgressionNum,
-  progressionStep,
-) => {
+export const getProgression = () => {
+  const firstProgressionNum = generateRandomNum();
+  const progressionStep = generateRandomNum();
+  const randomProgressionLength = generateRandomNum(
+    MIN_PROGRESSION_LENGTH,
+    MAX_PROGRESSION_LENGTH,
+  );
   const progression = [firstProgressionNum];
-  for (let i = 1; i < randomProgressionLength; i += 1) {
-    progression[i] = progression[i - 1] + progressionStep;
-    progression.push(progression[i]);
+  for (let i = 0; i < randomProgressionLength; i += 1) {
+    progression.push(progression[i] + progressionStep);
   } return progression;
 };
 
-export const progressionRandomHiddenIndex = generateRandomNum(0, randomProgressionLength);
+export const getProgressionWithHiddenNumber = (progression) => {
+  const progressionCopy = [...progression];
+  const progressionHiddenIndex = generateRandomNum(0, progression.length);
+  progressionCopy[progressionHiddenIndex] = HIDDEN_ITEM;
+  return progressionCopy;
+};
+
+export const getProgressionHiddenNumber = (progressionHidden, progressionFull) => {
+  const progressionHiddenIndex = progressionHidden.indexOf(HIDDEN_ITEM);
+  return progressionFull[progressionHiddenIndex];
+};
 
 export const isPrime = (randomNum) => {
-  let flag = true;
-  for (let dividedNum = 2; dividedNum < randomNum; dividedNum += 1) {
-    if (randomNum % dividedNum === 0) {
-      flag = false;
-      break;
+  for (let denom = 2; denom < randomNum; denom += 1) {
+    if (randomNum % denom === 0) {
+      return false;
     }
-  } return flag;
+  } return true;
 };

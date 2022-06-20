@@ -10,9 +10,9 @@ import {
 } from '../cli.js';
 import {
   ROUNDS_QUANTITY,
-  generateRandomNum,
-  calculatedArithmeticProgression,
-  progressionRandomHiddenIndex,
+  getProgression,
+  getProgressionWithHiddenNumber,
+  getProgressionHiddenNumber,
 } from '../index.js';
 
 const gameBrainProg = () => {
@@ -20,19 +20,17 @@ const gameBrainProg = () => {
   const gameName = gameBrainProg.name;
   displayGameRules(gameName);
 
-  let successRound = 0;
+  let successRoundCount = 0;
 
   do {
-    const firstProgressionNum = generateRandomNum();
-    const progressionStep = generateRandomNum();
+    const progressionFull = getProgression();
+    const progressionWithHiddenNum = getProgressionWithHiddenNumber(progressionFull);
 
-    const randomProgression = calculatedArithmeticProgression(firstProgressionNum, progressionStep);
+    const expectedAnswer = String(
+      getProgressionHiddenNumber(progressionWithHiddenNum, progressionFull),
+    );
 
-    const expectedAnswer = String(randomProgression[progressionRandomHiddenIndex]);
-    randomProgression[progressionRandomHiddenIndex] = '...';
-    const progressionQuestion = randomProgression;
-
-    askQuestion(progressionQuestion);
+    askQuestion(progressionWithHiddenNum);
 
     const userAnswer = getUserAnswer();
     const expectedAnswerEqualUserAnswer = isExpectedAnswerEqualUserAnswer(
@@ -40,15 +38,16 @@ const gameBrainProg = () => {
       userAnswer,
     );
     if (expectedAnswerEqualUserAnswer) {
-      successRound += 1;
+      successRoundCount += 1;
       displayMessageAfterCorrectRound();
     } else {
       displayMessageAfterUnsuccessfulGameEnd(userAnswer, expectedAnswer, userName);
       break;
     }
   }
-  while (successRound < ROUNDS_QUANTITY);
-  if (successRound === ROUNDS_QUANTITY) {
+  while (successRoundCount < ROUNDS_QUANTITY);
+
+  if (successRoundCount === ROUNDS_QUANTITY) {
     displayMessageAfterSuccessfulGameEnd(userName);
   }
 };

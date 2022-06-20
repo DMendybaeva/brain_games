@@ -19,7 +19,7 @@ const gameBrainEven = () => {
   const gameName = gameBrainEven.name;
   displayGameRules(gameName);
 
-  let successRound = 0;
+  let successRoundCount = 0;
 
   do {
     const rundomNum = generateRandomNum();
@@ -27,23 +27,23 @@ const gameBrainEven = () => {
 
     const userAnswer = getUserAnswer();
 
-    const isNumEven = isEven(rundomNum);
-    const expectedAnswer = isNumEven ? 'yes' : 'no';
-
+    const expectedAnswer = isEven(rundomNum) ? 'yes' : 'no';
     const expectedAnswerEqualUserAnswer = isExpectedAnswerEqualUserAnswer(
       expectedAnswer,
       userAnswer,
     );
+
     if (expectedAnswerEqualUserAnswer) {
-      successRound += 1;
+      successRoundCount += 1;
       displayMessageAfterCorrectRound();
     } else {
       displayMessageAfterUnsuccessfulGameEnd(userAnswer, expectedAnswer, userName);
       break;
     }
   }
-  while (successRound < ROUNDS_QUANTITY);
-  if (successRound === ROUNDS_QUANTITY) {
+  while (successRoundCount < ROUNDS_QUANTITY);
+
+  if (successRoundCount === ROUNDS_QUANTITY) {
     displayMessageAfterSuccessfulGameEnd(userName);
   }
 };
