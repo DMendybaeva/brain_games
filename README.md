@@ -35,23 +35,24 @@ Install packet in your system
 npm link 
 ```
 ### Installation
-[![asciicast](https://asciinema.org/a/WY2XWcUnG0Um8r0sNoTPAhKLr.svg)](https://asciinema.org/a/WY2XWcUnG0Um8r0sNoTPAhKLr)
+[![asciicast](https://asciinema.org/a/q13yWEIshHL1sjGUWTJPrt0Cg.svg)](https://asciinema.org/a/q13yWEIshHL1sjGUWTJPrt0Cg)
+
 Please, watch asciicasts with each game gameplay below.
 
 ### Playing 'Is even?'
-[![asciicast](https://asciinema.org/a/YBR3mMtMQ0OgxXqyImiZc1kVh.svg)](https://asciinema.org/a/YBR3mMtMQ0OgxXqyImiZc1kVh)
+[![asciicast](https://asciinema.org/a/T57xl5VfZUrI2VTjp1Tbtbtl5.svg)](https://asciinema.org/a/T57xl5VfZUrI2VTjp1Tbtbtl5)
 
 ### Playing 'Calculate'
-[![asciicast](https://asciinema.org/a/re9Th0xfGgFkOoqU6eHavE6OX.svg)](https://asciinema.org/a/re9Th0xfGgFkOoqU6eHavE6OX)
+[![asciicast](https://asciinema.org/a/Kl8X5uyHoa6PXK2YHIqQDBFRG.svg)](https://asciinema.org/a/Kl8X5uyHoa6PXK2YHIqQDBFRG)
 
 ### Playing 'Greatest common divisor'
-[![asciicast](https://asciinema.org/a/Cc6YS4Lbwa8dsLLLcFA8tcWhL.svg)](https://asciinema.org/a/Cc6YS4Lbwa8dsLLLcFA8tcWhL)
+[![asciicast](https://asciinema.org/a/CvuzF1ixRDtRgPz3DIaGqggyU.svg)](https://asciinema.org/a/CvuzF1ixRDtRgPz3DIaGqggyU)
 
 ### Playing 'Is prime?'
-[![asciicast](https://asciinema.org/a/79DlDx1Dj697B06s2xRw2lGpq.svg)](https://asciinema.org/a/79DlDx1Dj697B06s2xRw2lGpq)
+[![asciicast](https://asciinema.org/a/fvmtZLeqeRyJ2nN92wyWth1bz.svg)](https://asciinema.org/a/fvmtZLeqeRyJ2nN92wyWth1bz)
 
 ### Playing 'Progression'
-[![asciicast](https://asciinema.org/a/8ECJdlv4PnZtCsUJdu4E7QP8W.svg)](https://asciinema.org/a/8ECJdlv4PnZtCsUJdu4E7QP8W)
+[![asciicast](https://asciinema.org/a/Un6tonERzqe2l3ow9uyyv7pNT.svg)](https://asciinema.org/a/Un6tonERzqe2l3ow9uyyv7pNT)
 
 ### Authors:
 - Diana Mendybaeva
