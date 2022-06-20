@@ -1,4 +1,7 @@
 # brain_games
+### Hexlet tests and linter status:
+[![Eslint check](https://github.com/DMendybaeva/brain_games/workflows/eslint-check/badge.svg)](https://github.com/DMendybaeva/brain_games/actions)
+
 Brain games - 5 simple command line iterface games:
 
 'Is even?' - quess is number even.
